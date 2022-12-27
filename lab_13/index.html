@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Пример 17 - Дерево списков</title>
+</head>
+
+<body>
+
+  <script>
+    let data = {
+      "Овощи": {
+        "огурцы": 5,
+        "помидоры": 3
+      },
+      "Фрукты": {
+        "красные": {
+          "клубника": 2,
+          "малина": 4
+        },
+        "зеленые": {
+          "яблоко": 6,
+          "лайм": 2
+        }
+      }
+    }
+
+    //функция для генерации списка ul
+    function createUL(obj){
+      if(!Object.keys(obj).length){ 
+        return //завершаем работу функции если в переданном объекте нет ключей
+      }
+      let ul = document.createElement('ul') //создаём пустой список ul
+      for(let key in obj){ //проходим по всем элементам объекта
+        let li = document.createElement('li') // создаём элемент li
+        if(!isNaN(obj[key])) //проверяем является ли элемент объекат числом
+          li.textContent = key + obj[key] //если obj[key]-число записываем в li key + obj[key]
+        else
+          li.textContent = key //в обратном случае
+        
+        let childrenUL = createUL(obj[key]) //создаём дочерний элемент в случае с волженным списком
+        if(childrenUL){ //проверка на пустоту
+          li.append(childrenUL) // добавляем в li
+        }
+        ul.append(li) // добавляем li в ul
+      }
+      return ul //возвражаем заолненый готовый список
+    }
+
+    function createTree(container, obj){ //функция для создания и добавления дерева ul в разметку
+        document.querySelector(container).append(createUL(obj)) //находим передоваемый container создаём из obj список и доавляем его 
+      }
+
+      createTree('body', data) //вызов функции создания списка
+  </script>
+</body>
+</html>
