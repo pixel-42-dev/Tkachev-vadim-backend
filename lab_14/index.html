@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Tip calculator</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="calculator">
+            <h3>Калькулятор чаевых</h3>
+            <p></p>
+            <br>
+            <label for="amount">Счёт</label>
+            <br>
+            <button><i class="fa-solid fa-ruble-sign"></i></button>
+            <input id="amount" type="number">
+            <br>
+            <br>
+            <label for="guest">Количество гостей</label>
+            <br>
+            <button><i class="fa-sharp fa-solid fa-person"></i></button>
+            <input id="guest" type="number">
+            <br>
+            <br>
+            <label for="quality">Качество сервиса</label>
+            <br>
+            <select id="quality">
+                <option disabled selected value='0'>Выберите...</option>
+                <option value="0">Плохо</option>
+                <option value="0.05">Нормально</option>
+                <option value="0.1">Хорошо</option>
+                <option value="0.3">Идеально</option>
+            </select>
+            <div class="result">
+                <p></p>
+                <button onclick="calculate()">Рассчитать</button>
+            </div>
+        </div>
+        <div id="tip-amount"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
